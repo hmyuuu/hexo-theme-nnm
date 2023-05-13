@@ -316,13 +316,16 @@ RightMenus.fun = (() => {
     }
 
     // 判断是否显示音乐控制器
-    if (volantis.GLOBAL_CONFIG.plugins.aplayer?.enable
-      && typeof RightMenuAplayer !== 'undefined'
-      && RightMenuAplayer.APlayer.player !== undefined) {
-      if (rightMenuConfig.options.musicAlwaysShow
-        || RightMenuAplayer.APlayer.status === 'play'
-        || RightMenuAplayer.APlayer.status === 'undefined') {
-        globalData.isShowMusic = true;
+    if (volantis.GLOBAL_CONFIG.plugins.aplayer?.enable) {
+      if (typeof RightMenuAplayer !== 'undefined') {
+        // * 执行前先尝试更新播放器的状态
+        RightMenuAplayer.checkAPlayer();
+        if (RightMenuAplayer.APlayer.player !== undefined 
+          && (rightMenuConfig.options.musicAlwaysShow
+          || RightMenuAplayer.APlayer.status === 'play'
+          || RightMenuAplayer.APlayer.status === 'undefined')) {
+          globalData.isShowMusic = true;
+        }
       }
     }
 
@@ -504,8 +507,9 @@ RightMenus.fun = (() => {
   }
 
   fn.copyImg = () => {
+    // * 每次复制还要再 fetch 一遍图片啊，，虽然应该被缓存了。
     if (volantis.GLOBAL_CONFIG.plugins.message.rightmenu.notice) {
-      VolantisApp.message('系统提示', '复制中，请等待。', {
+      VolantisApp.message('系统提示', '尝试复制中。如果复制失败，<br>请尝试Ctrl+右键唤出系统右键菜单。', {
         icon: rightMenuConfig.options.iconPrefix + ' fa-images'
       })
     }

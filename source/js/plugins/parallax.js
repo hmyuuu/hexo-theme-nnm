@@ -11,9 +11,12 @@ Parallax.slidein = () => {
   var opac = parseFloat(slider.style.opacity);
   if (opac !== 1) {
     if (Parallax.mirrors.length >= 2) {
-      opac = opac + 0.1;
+      // * 迫真渐变的进行的步数？增加流畅度是不是可以 CSS？
+      // 还真是，加到 first.styl 里应该就行了，应该也能读取配置文件
+      const step = 1; // 10;
+      opac = opac + 1 / step;
       slider.style.opacity = opac;
-      setTimeout(Parallax.slidein, Parallax.options.fade / 10);
+      setTimeout(Parallax.slidein, Parallax.options.fade / step);
     } else {
       slider.style.opacity = 1;
     }

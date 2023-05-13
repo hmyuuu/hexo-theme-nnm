@@ -302,3 +302,9 @@ if hexo-config('plugins.parallax.enable')
         filter blur(12px)
       100%
         opacity: 1
+
+// 迫真渐变的解决方案
+img.parallax-slider
+  $parallax-fade-time = unit(hexo-config('plugins.parallax.fade'), ms)
+  transition: opacity linear $parallax-fade-time
+  // transition: opacity ease $parallax-fade-time

@@ -53,7 +53,9 @@ _%>
       Parallax.start();
       index++;
       if (Parallax.cache) {
-        fetch(imgs[index % imgs.length] +"?t=" + new Date().getTime());
+        // ? 为什么要加上时间戳？不知道意义是什么
+        // fetch(imgs[index % imgs.length] +"?t=" + new Date().getTime());
+        fetch(imgs[index % imgs.length])
         if (index == imgs.length) {
           Parallax.cache = 0;
         }

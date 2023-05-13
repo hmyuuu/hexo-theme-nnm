@@ -43,7 +43,7 @@ Object.freeze(locationHash);
 /* Main */
 const VolantisApp = (() => {
   const fn = {},
-    COPYHTML = '<button class="btn-copy" data-clipboard-snippet=""><i class="fa-solid fa-copy"></i><span>COPY</span></button>';
+    COPYHTML = '<button class="btn-copy" data-clipboard-snippet=""><i class="fal fa-copy"></i><span>复制</span></button>';
   let scrollCorrection = 80;
 
   fn.init = () => {
@@ -421,11 +421,11 @@ const VolantisApp = (() => {
           _BtnCopy.classList.add('copied');
           _icon.classList.remove('fa-copy');
           _icon.classList.add('fa-check-circle');
-          _span.innerText = "COPIED";
+          _span.innerText = "已复制";
           setTimeout(() => {
             _icon.classList.remove('fa-check-circle');
             _icon.classList.add('fa-copy');
-            _span.innerText = "COPY";
+            _span.innerText = "复制";
           }, 2000)
         }).catch(e => {
           VolantisApp.message('系统提示', e, {
@@ -434,11 +434,11 @@ const VolantisApp = (() => {
           _BtnCopy.classList.add('copied-failed');
           _icon.classList.remove('fa-copy');
           _icon.classList.add('fa-exclamation-circle');
-          _span.innerText = "COPY FAILED";
+          _span.innerText = "复制失败";
           setTimeout(() => {
             _icon.classList.remove('fa-exclamation-circle');
             _icon.classList.add('fa-copy');
-            _span.innerText = "COPY";
+            _span.innerText = "复制";
           })
         })
       }
@@ -447,17 +447,35 @@ const VolantisApp = (() => {
 
   // 工具类：复制字符串到剪切板
   fn.utilWriteClipText = (str) => {
+    const fallback = (str) => {
+      const input = document.createElement('textarea');
+      input.setAttribute('readonly', 'readonly');
+      input.style.display = 'none';
+      document.body.appendChild(input);
+      input.innerHTML = str;
+      input.select();
+      return input;
+    }
+    if (!navigator.clipboard) {
+      const input = fallback(str);
+      try {
+        let result = document.execCommand('copy');
+        if (!result || result === 'unsuccessful')
+          return Promise.reject('复制文本失败!');
+        else return Promise.resolve();
+      } catch (e) {
+        return Promise.reject('受到浏览器安全策略限制！');
+      } finally {
+        document.body.removeChild(input);
+      }
+    }
     return navigator.clipboard
       .writeText(str)
       .then(() => {
         return Promise.resolve()
       })
       .catch(e => {
-        const input = document.createElement('textarea');
-        input.setAttribute('readonly', 'readonly');
-        document.body.appendChild(input);
-        input.innerHTML = str;
-        input.select();
+        const input = fallback(str);
         try {
           let result = document.execCommand('copy')
           document.body.removeChild(input);

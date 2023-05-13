@@ -7,11 +7,21 @@ const RightMenuAplayer = (() => {
   const fn = {};
 
   fn.checkAPlayer = () => {
-    if (playStatus === undefined || APlayer.player === undefined) {
+    const playerOffline = () => 
+      playStatus === undefined || APlayer.player === undefined;
+    const observerOffline = () => 
+      APlayer.observer === undefined;
+    if (playerOffline()) {
       fn.setAPlayerObject();
-    } else if (APlayer.observer === undefined) {
+    } else if (observerOffline()) {
       fn.setAPlayerObserver();
     }
+    // * 要不加到右键菜单每次唤起的检查函数里？
+    // if (playerOffline() || observerOffline()) {
+    //   volantis.requestAnimationFrame(() => {
+    //     RightMenuAplayer.checkAPlayer();
+    //   });
+    // }
   }
 
   // 设置全局播放器所对应的 aplyer 对象

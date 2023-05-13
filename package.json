@@ -1,26 +1,21 @@
 {
-  "name": "hexo-theme-volantis",
-  "version": "6.0.0-alpha.0",
-  "description": "Elegant and powerful theme for Hexo.",
+  "name": "hexo-theme-ymd45921",
+  "version": "1.0.0",
+  "description": "A self-use Hexo theme based on hexo-theme-volantis.",
   "main": "package.json",
   "scripts": {
     "test": "echo test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/volantis-x/hexo-theme-volantis.git"
+    "url": "git+https://github.com/ymd45921/hexo-theme-ymd45921.git"
   },
   "keywords": [
     "hexo",
     "theme",
     "volantis"
   ],
-  "author": "Volantis X (https://github.com/volantis-x/)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/volantis-x/hexo-theme-volantis/issues"
-  },
-  "homepage": "https://volantis.js.org",
   "dependencies": {
     "hexo": "^6.3.0",
     "hexo-renderer-stylus": "^2.1.0",
