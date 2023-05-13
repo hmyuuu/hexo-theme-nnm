@@ -37,6 +37,14 @@
         <%- item %>
       <%_ }) _%>
     <%_ } _%>
+    <!-- import service worker-->
+    <%_ if (theme.plugins.sw && theme.plugins.sw.enable){ _%>
+      <%_ if (theme.plugins.sw.install){ _%>
+        <%- partial('_plugins/sw/mount') %>
+      <%_ } else { _%>
+        <%- partial('_plugins/sw/umount') %>
+      <%_ } _%>
+    <%_ } _%>
     <!-- import body_end end-->
     <!-- Custom Files bodyEnd begin-->
     <%- volantis_inject('bodyEnd') %>

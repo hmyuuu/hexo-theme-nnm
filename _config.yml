@@ -995,6 +995,13 @@ plugins:
   swiper:
     enable: true
 
+  # * 简单 Service Worker
+  # 如果要卸载 sw，请保留注销 sw 的代码在你的网站中至少 3 个月或者更久的时间
+  sw:
+    enable: false
+    install: false  # true for install, false for un-install
+    file: /sw.js
+
 ############################### Plugins ############################### > end
 
 ############################### Rightmenu ############################### > start
