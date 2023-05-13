@@ -1,0 +1,16 @@
+nnm_dark()
+  .post_read
+    code:not([class])
+      color: #999
+    .highlight
+      background: alpha(darken($color-dark-read-bkg, 50), 0.3)
+    
+
+
+@media (prefers-color-scheme: dark)
+  :root
+    --color-mode: 'dark'
+  :root:not([color-scheme])
+    nnm_dark()
+[color-scheme='dark']
+  nnm_dark()

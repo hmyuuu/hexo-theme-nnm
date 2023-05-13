@@ -1,0 +1,27 @@
+.katex-block
+  math
+    font: normal 1.21em KaTeX_Main,Times New Roman,serif
+    line-height: normal
+  overflow-x: auto
+  // overflow-y: auto
+// button.iziToast-close
+//   color: var(--color-text)  
+.iziToast:after
+  box-shadow: 0 1px 2px 0px rgba(0,0,0,0.1) !important
+  // box-shadow: none !important
+
+$nnm-blur = saturate(200%) blur(20px)
+
+// 消息弹窗的模糊效果
+if hexo-config('plugins.message.blur') == true
+  .iziToast
+    backdrop-filter: $nnm-blur
+
+// 阅读模式背景模糊 // ! 似乎没意义，因为后面的元素只能都隐藏
+// .common_read_bkg 
+//   backdrop-filter: $nnm-blur
+//   background: var(--color-site-bg-blur) !important
+
+// * DOMController.toggleClass(document.body, "nnm-sepia")
+.nnm-sepia
+  filter: sepia(.2)

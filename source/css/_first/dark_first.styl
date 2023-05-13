@@ -28,8 +28,9 @@ fitst_dark()
   --color-link: $color-dark-link
   --color-copyright-bkg: $color-dark-copyright-bkg
 
-  // * 拓展的全局变量
-  --color-card-blur: alpha($color-dark-card, .5)
+  // * 拓展的全局变量   !!! 同步修改 base_first.styl !!!
+  --color-card-blur: alpha($color-dark-card, .55)
+  --color-site-bg-blur: alpha($color-dark-site-bg, .55)
 
   img
     filter: brightness(convert(hexo-config('color_scheme.dark.brightness'))) !important

@@ -1,0 +1,12 @@
+@keyframes rightmenu-in 
+  0% 
+    opacity: 0;
+    transform: translateY(-50px);
+  100% 
+    opacity: 1;
+    filter: none;
+    transform: translateY(0);
+
+// ? 如何做消失动画？
+ul.list-v.rightmenu 
+  animation: rightmenu-in .2s cubic-bezier(.23,0,0,1.32)

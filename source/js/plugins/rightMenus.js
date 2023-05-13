@@ -571,7 +571,9 @@ RightMenus.fun = (() => {
   fn.readMode = () => {
     if (typeof ScrollReveal === 'function') ScrollReveal().clean('#comments');
     DOMController.setStyle('#l_header', 'opacity', 0);
-    DOMController.fadeToggleList([
+    // // 阅读模式背景改成毛玻璃了，所以少隐藏点元素
+    // todo 少隐藏点元素 好像不太行
+    DOMController.fadeToggleList([  
       document.querySelector('#l_cover'), document.querySelector('footer'),
       document.querySelector('#s-top'), document.querySelector('.article-meta#bottom'),
       document.querySelector('.prev-next'), document.querySelector('#l_side'),

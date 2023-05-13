@@ -1096,6 +1096,9 @@ rightmenus:
       - {id: 'source_docs', name: '本站源码', icon: 'fa-solid fa-code-branch', link: 'https://github.com/volantis-x/volantis-docs/', group: 'link'}
       - {id: 'source_theme', name: '主题源码', icon: 'fa-solid fa-code-branch', link: 'https://github.com/volantis-x/hexo-theme-volantis/', group: 'link'}
     darkMode:
+      # * nnm 的滤镜；没有很好地融合到 Volantis 中
+      # ! 开启 sepia 之后会导致 Parallax 工作异常，右键菜单出现位置发生偏移，原因未知
+      # - {id: 'sepiaMode', name: '夕阳滤镜', icon: 'fal fa-eclipse-alt', event: 'DOMController.toggleClass(document.body, "nnm-sepia")', group: 'darkMode'}
       - {id: 'darkMode', name: '暗黑模式', icon: 'fa-solid fa-moon', event: 'volantis.dark.toggle()', group: 'darkMode'}
 ###
 

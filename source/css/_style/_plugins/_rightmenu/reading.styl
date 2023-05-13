@@ -5,6 +5,7 @@
   transform: none !important
   animation: none !important
   position: relative !important
+  // filter: sepia(.1)   // // 别玩了
 
 .body-wrapper.common_read
   display: block
@@ -24,7 +25,7 @@
     min-height: 0 !important
 
 .common_read_bkg
-  background-color: var(--color-read-bkg) !important
+  background-color: var(--color-read-bkg)
   opacity: 1 !important
   display: block !important
   position: fixed !important
@@ -52,5 +53,34 @@
   z-index: 2147483646 !important
   overflow: visible !important
   font-size: 1.15rem !important
-  border-radius: 0 !important;
+  // border-radius: 0 !important;   // * 阅读模式是否保留圆角
   box-shadow: 0 6px 12px 3px #00000033
+  code:not([class])
+    color: var(--color-text)  // todo 专门调色
+  table:not([class])
+    td,th // 表格样式，参照 base.styl，暗黑模式 dark_nnm.styl
+      border: 1px solid darken($color-read-bkg, 2) /////!important
+    th
+      background-color: darken($color-read-bkg, 2) /////!important
+    tr
+      background-color: transparent /////!important
+      trans()
+      &:hover
+        background-color: darken($color-read-bkg, .5) /////!important
+  .copyright
+    >blockquote
+      background: alpha(saturate($color-read-bkg, 50), 0.3)
+  .highlight
+    background: alpha(saturate($color-read-bkg, 50), 0.3)
+    >table
+      td,th
+        border: none /////!important
+      background-color: transparent /////!important
+      border: none /////!important
+      tr
+        background-color: transparent /////!important
+        &:hover
+          background-color: transparent /////!important
+      .gutter
+        background: alpha(saturate($color-read-bkg, 100), 0.5)
+      
