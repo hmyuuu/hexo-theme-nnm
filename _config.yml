@@ -1277,7 +1277,8 @@ custom_css:
     h6: 1rem
     list: .9375rem
     meta: .875rem
-    code: .8125rem
+    code: .9em
+    pre: .8125rem
     footnote: .78125rem
   fontfamily:
     logofont:

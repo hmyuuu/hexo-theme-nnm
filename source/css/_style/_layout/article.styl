@@ -140,6 +140,8 @@
       color: alpha($color-text, 90%)
   code
     font-family: $fontfamily-code
+    font-size: $fontsize-code
+    background: alpha(#888, 0.07)  // * 行内代码果然还是得有背景？不想要了可以删掉
     &:not([class])
       word-break: break-all
       color: var(--color-inlinecode)

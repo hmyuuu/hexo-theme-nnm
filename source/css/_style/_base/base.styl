@@ -177,19 +177,20 @@ table:not([class])
   display: inline-block
   max-width: 100%
   vertical-align: text-top
-  th
-    background-color: darken($color-block, 2)
   td,th
     padding: 8px 16px
-    border: 2px solid darken($color-block, 2)
+    border: 1px solid darken($color-block, 4)
     line-height: 1.5
     font-size: 90%
+  th
+    background-color: darken($color-block, 4)
+    // border-bottom: 1.5px solid darken($color-block, 10)     // * 不想连体？
   tr
     word-break: keep-all
-    background-color: lighten($color-block, 3)
+    background-color: lighten($color-block, 2.5)
     trans()
     &:hover
-      background-color: darken($color-block, 2)
+      background-color: darken($color-block, .5)     // * 不想连体！
 
 
 td,th
