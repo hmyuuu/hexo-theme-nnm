@@ -145,12 +145,12 @@
       @media screen and (max-width: $device-mobile)
         padding-left: $iconW + $iconMargin
       border-radius: 1.4rem
-      background: alpha($color-card, .6)
+      background: alpha($color-card, .5)
       backdrop-filter: blur(10px)
       border: none
       color: var(--color-text)
       &:hover
-        background: alpha($color-card, .8)
+        background: alpha($color-card, .65)
       &:focus
         background: alpha($color-card, 1)
 
@@ -233,7 +233,7 @@
           background: var(--color-card)
           backdrop-filter: none
         &:hover
-          background: var(--color-card)
+          background: alpha($color-card, .5)
 
 if hexo-config('cover.layout_scheme') == 'dock'
   .cover-wrapper.dock .top

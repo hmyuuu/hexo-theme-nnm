@@ -1,3 +1,5 @@
+$darken-amount = 30%
+
 // 首屏加载的暗黑模式
 fitst_dark()
   // Base Dark Color
@@ -30,7 +32,7 @@ fitst_dark()
     filter: brightness(convert(hexo-config('color_scheme.dark.brightness'))) !important
   //header
   .blur
-    background: rgba($color-dark-site-bg, .9) !important
+    background: rgba(darken($color-dark-site-bg, $darken-amount), .9) !important
   .white-box.blur
     background: rgba($color-dark-card, .9) !important
   .nav-main
@@ -50,6 +52,27 @@ fitst_dark()
   details
     border: 1px solid var(--color-site-bg) !important
     background: var(--color-site-bg) !important
+
+  .cover-wrapper
+    if hexo-config('cover.layout_scheme') == 'dock' || hexo-config('cover.layout_scheme') == 'featured' || hexo-config('cover.layout_scheme') == 'focus'
+      &.dock .menu, &.featured .menu, &.focus .menu
+        border-radius: $border-button + 2px
+        .list-h a
+          color: alpha($color-dark-text, .7)
+          // &.active
+          //   img+p
+          //     color: var(--color-text)
+          //   background: var(--color-card)
+          //   backdrop-filter: none
+          &:hover
+            background: alpha($color-dark-card, .5) !important
+
+  if hexo-config('cover.layout_scheme') == 'dock'
+    .cover-wrapper.dock .menu
+      background: alpha(darken($color-dark-card, $darken-amount * 2), .65)
+      .list-h a p
+        color: $color-dark-p
+
 
   //search
   #u-search .modal,
@@ -75,3 +98,7 @@ if hexo-config('plugins.darkmode.enable')
       fitst_dark()
   [color-scheme='dark']
     fitst_dark()
+
+// 增加右键菜单半透明
+ul.list-v.rightmenu.blur
+  background: alpha($color-dark-card, .5)

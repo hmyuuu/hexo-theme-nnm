@@ -25,12 +25,13 @@
 
   trans()
   @media screen and (max-width: $device-tablet)
-    z-index: 1001
+    z-index: 1001     // ? z-index 设置正确，为什么叠放在 header 下面？
     position: fixed
     max-height: 1000px
     width: auto
     max-width: "calc(100% - 2 * %s)" % $gap
-    top: $navbar-height - $gap
+    top: $navbar-height + $gap  // todo 因为没能解决叠放的问题，先这么办了……
+    // top: $navbar-height - $gap
     right: $gap
     border-radius: $border-card * 0.5
     box-shadow: $boxshadow-float

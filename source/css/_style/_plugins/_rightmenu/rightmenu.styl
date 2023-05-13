@@ -81,12 +81,15 @@ ul.list-v.rightmenu
         position: relative
         height: 8px
         width: 100%
-        background: mix($color-block, $color-text, 95)
+        // background: alpha(mix($color-block, $color-text, 95), .5)
+        background: var(--color-site-body)
         border-radius: $cellH
         overflow: hidden
         cursor: pointer
+        // 左右喇叭图标
         i.left, i.right
           color: mix($color-text, $color-card, 80)
+          // color: mix($color-text, $color-card, 80)
           position: absolute
           top: 0
           width: $cellH - 4px
@@ -98,6 +101,9 @@ ul.list-v.rightmenu
           left: 0
         i.right
           right: 0
+        // * 右键播放器音量栏颜色随着进度调整
+        i.filled
+          color: white
         trans()
         &:hover
           height: $cellH - 4px
@@ -108,3 +114,6 @@ ul.list-v.rightmenu
           background: $color-theme
           height: 100%
           width: 100%
+// 增加右键菜单半透明
+ul.list-v.rightmenu.blur
+  background: alpha($color-card, .65)

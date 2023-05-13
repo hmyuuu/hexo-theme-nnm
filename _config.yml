@@ -1237,6 +1237,8 @@ custom_css:
   scrollbar:
     size: 4px
     border: 2px
+  rightmenu:
+    effect: [blur]                    # [blur]  # todo 其他特效待实现/检验
   navbar:
     height: 64px
     width: auto # auto, max

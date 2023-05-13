@@ -161,7 +161,7 @@
       line-height: 1.3
       width: 100%
       color: var(--color-text)
-      background: darken($color-card, 2)
+      background: alpha(darken($color-card, 2), .65)
       box-shadow: none
       box-sizing: border-box
       padding-left: $iconW + $iconMargin
@@ -170,8 +170,12 @@
       border: none
       trans()
       @media screen and (min-width: $device-mobile)
+        &:hover
+          background: alpha(lighten($color-theme, 95%), 1)
+          border: 1px solid $color-theme
         &:focus
-          box-shadow: $boxshadow-float
+          border: 1.5px solid $color-theme
+          // box-shadow: $boxshadow-float
       @media screen and (max-width: $device-mobile)
         background: var(--color-block)
         padding-left: $gap * 0.5
@@ -222,7 +226,7 @@ ul.nav-list-h
     >a
       -webkit-font-smoothing: antialiased
       -moz-osx-font-smoothing: grayscale
-      font-weight: 600
+      // font-weight: 600
 
 ul.list-v
   z-index: 1
@@ -261,7 +265,7 @@ ul.list-v
     display: block
     color: var(--color-list)
     font-size: $fontsize-meta
-    font-weight: bold
+    // font-weight: bold
     line-height: 36px
     @media screen and (max-width: $device-laptop)
       line-height: 40px
@@ -280,7 +284,7 @@ ul.list-v
   .menu
     >ul>li>a
       display: block
-      padding: 0 8px
+      padding: 0 8px // 顶栏选项卡间距
       >i
         margin-right: 4px
 

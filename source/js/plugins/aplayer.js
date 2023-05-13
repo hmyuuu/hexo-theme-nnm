@@ -103,7 +103,16 @@ const RightMenuAplayer = (() => {
 
   fn.onUpdateAPlayerVolume = () => {
     try {
-      APlayer.volumeBar.children[0].style.width = APlayer.player.audio.volume * 100 + '%';
+      const volume = APlayer.player.audio.volume,
+            left = APlayer.volumeBar.children[1],
+            right = APlayer.volumeBar.children[2];
+      APlayer.volumeBar.children[0].style.width = volume * 100 + '%';
+      // 这里可以修改音量条两侧的图标属性！设置阈值，目标类 filled
+      const threshold = [0.15, 0.9], tr = 'filled'
+      if (volume > threshold[0]) left.classList.add(tr);
+      else left.classList.remove(tr);
+      if (volume > threshold[1]) right.classList.add(tr);
+      else right.classList.remove(tr);
     } catch (error) {
       console.log(error);
     }

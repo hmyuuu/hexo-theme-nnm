@@ -16,7 +16,7 @@
 
 .aplayer
   max-width: 500px
-  border-radius: 4px
+  border-radius: $border-card !important  // * 4px？$border-codeblock？要强制覆盖 Aplayer 本身的 CSS
   color: var(--color-text)
   font-family: $fontfamily
   .aplayer-list
@@ -34,3 +34,10 @@ if hexo-config('plugins.aplayer.autoHide')
     left: -66px !important
     &:hover
       left: 0px !important
+
+/// * 会更卡吗？会卡的话就不要这样了
+.aplayer .aplayer-lrc 
+  p
+    font-size: 11px !important
+  p.aplayer-lrc-current
+    font-size: 13px !important  // * 同样应该强制覆写
