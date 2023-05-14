@@ -58,6 +58,16 @@ fitst_dark()
     background: var(--color-site-bg) !important
 
   .cover-wrapper
+    if hexo-config('cover.layout_scheme') == 'search'
+      .m_search
+        .icon
+          color: alpha($color-dark-p, .75)
+        input.input
+          background: alpha(darken($color-dark-card, $darken-amount), .55)
+          &:hover
+            background: alpha(darken($color-dark-card, $darken-amount * 2), .7) 
+          &:focus
+            background: darken($color-dark-card, $darken-amount * 2)
     if hexo-config('cover.layout_scheme') == 'dock' || hexo-config('cover.layout_scheme') == 'featured' || hexo-config('cover.layout_scheme') == 'focus'
       &.dock .menu, &.featured .menu, &.focus .menu
         border-radius: $border-button + 2px
@@ -85,10 +95,10 @@ fitst_dark()
     background: var(--color-card) !important
   #u-search .modal-body .modal-results .result:hover
     background: var(--color-block) !important
-  .u-search-input:hover
-    background: var(--color-block) !important
-  .u-search-input:focus
-    background: var(--color-site-body) !important
+  // .u-search-input:hover
+  //   background: var(--color-block) !important
+  // .u-search-input:focus
+  //   background: var(--color-site-body) !important
   //phone search
   .l_header .m_search
     @media screen and (max-width: $device-mobile)

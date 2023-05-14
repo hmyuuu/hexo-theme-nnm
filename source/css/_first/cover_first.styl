@@ -235,6 +235,9 @@
         &:hover
           background: alpha($color-card, .5)
 
+
+$dock-blur-bg = alpha($color-card, .55)
+
 if hexo-config('cover.layout_scheme') == 'dock'
   .cover-wrapper.dock .top
     margin-bottom: $gap * 3
@@ -252,7 +255,7 @@ if hexo-config('cover.layout_scheme') == 'dock'
         overflow-x: scroll
         scrollbar(0, 0)
     @supports (backdrop-filter: blur(20px))
-      background: alpha($color-card, .5)
+      background: $dock-blur-bg
       backdrop-filter: saturate(200%) blur(20px)
 
 if hexo-config('cover.layout_scheme') == 'featured'
@@ -261,9 +264,9 @@ if hexo-config('cover.layout_scheme') == 'featured'
       margin: -2px
     .list-h a
       margin: 2px
-      background: alpha($color-card, .5)
+      background: $dock-blur-bg
       @supports (backdrop-filter: blur(20px))
-        background: alpha($color-card, .5)
+        background: $dock-blur-bg
         backdrop-filter: saturate(200%) blur(20px)
 
 if hexo-config('cover.layout_scheme') == 'focus'
@@ -272,9 +275,9 @@ if hexo-config('cover.layout_scheme') == 'focus'
       margin: 2px
     trans()
     &:hover
-      background: alpha($color-card, .5)
+      background: $dock-blur-bg
       @supports (backdrop-filter: blur(20px))
-        background: alpha($color-card, .5)
+        background: $dock-blur-bg
         backdrop-filter: saturate(200%) blur(20px)
     .list-h a
       margin: 2px
