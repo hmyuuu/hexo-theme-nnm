@@ -186,11 +186,14 @@
 
     @media screen and (max-width: $device-tablet)
       box-shadow: none
-      background: transparent !important
       margin-top: 2 * $gap
-      backdrop-filter: none
-      color: var(--color-site-inner)
-
+      // * 原样式：当背景是浅色的时候，透明底白字看不清字
+      // color: var(--color-site-inner)
+      // background: transparent !important
+      // backdrop-filter: none
+      background: var(--color-card-blur)
+      padding: 32px 8px
+      backdrop-filter: saturate(200%) blur(20px)
 
 
   &.text
