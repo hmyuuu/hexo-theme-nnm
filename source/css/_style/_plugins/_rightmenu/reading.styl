@@ -67,6 +67,12 @@
       trans()
       &:hover
         background-color: darken($color-read-bkg, .5) /////!important
+  code
+    background: saturate($color-read-bkg, 35)
+  // 不搞文章标题装饰的话，这些语句就不需要
+  // h1, h2, h3, h4, h5, h6
+  //   background: transparent !important
+  //   border: none    // * 使用 inkss.cn 的标题装饰方法，会导致 display 设置为 initial
   .copyright
     >blockquote
       background: alpha(saturate($color-read-bkg, 50), 0.3)
@@ -83,4 +89,11 @@
           background-color: transparent /////!important
       .gutter
         background: alpha(saturate($color-read-bkg, 100), 0.5)
+
+// 落霞孤鹜！
+// 作者博客：https://lxgw.github.io/
+// 使用 CDN：http://staticfile.org/
+.post_read
+  $lxgw = LXGW WenKai Screen, LXGW Wenkai, LXGW Wenkai Mono
+  font-family: $lxgw, $fontfamily
       

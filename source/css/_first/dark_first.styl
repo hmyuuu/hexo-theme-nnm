@@ -36,7 +36,7 @@ fitst_dark()
     filter: brightness(convert(hexo-config('color_scheme.dark.brightness'))) !important
   //header
   .blur
-    background: rgba(darken($color-dark-site-bg, $darken-amount), .9) !important
+    background: rgba(darken($color-dark-site-bg, $darken-amount), .8) !important
   .white-box.blur
     background: rgba($color-dark-card, .9) !important
   .nav-main
@@ -73,7 +73,7 @@ fitst_dark()
 
   if hexo-config('cover.layout_scheme') == 'dock'
     .cover-wrapper.dock .menu
-      background: alpha(darken($color-dark-card, $darken-amount * 2), .65)
+      background: alpha(darken($color-dark-card, $darken-amount * 2), .6)
       .list-h a p
         color: $color-dark-p
 

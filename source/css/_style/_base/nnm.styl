@@ -10,3 +10,69 @@
 // ? 如何做消失动画？
 ul.list-v.rightmenu 
   animation: rightmenu-in .2s cubic-bezier(.23,0,0,1.32)
+
+#rightmenu-wrapper
+  transition: all .1s ease
+
+// 顶栏收起动画
+.l_header.auto.show
+  transform: translateY(0) scale(1)
+.l_header.auto
+  transition: all .3s ease
+  transform: translateY(-100%)
+  visibility: hidden
+
+// 引用内标题格式调整
+// todo 待测试；测试完移动到 article.styl 中
+blockquote
+  h1, h2
+    &::before
+      height: 2rem
+  h3, h4, h5, h6
+    &::before
+      height: 4rem
+    
+
+
+// ---------- 文章标题 H2~H6 装饰（暂时废弃） ------------
+// #post-body
+//   h2
+    /// todo inkss.cn 方案 2; 暂时不正常工作
+    // display: initial
+    // border-left: 8px saturate($color-theme, 20%) solid
+    // pading-left: 12px
+    /// * inkss.cn 方案 1;
+    // display: initial
+    // background: linear-gradient(transparent 65%, alpha($color-theme, .2) 0px)
+    /// todo Argon 方案；使用 ::before 和 Volantis 冲突，大小待调整
+    // &:before
+    //   content: ''
+    //   display: inline-block
+    //   background: saturate($color-theme, 20%)
+    //   opacity: 1
+    //   pointer-events: none
+    //   border-radius: 15px
+    //   width: 6px
+    //   vertical-align: middle
+    //   margin-right: 12px
+    //   height: 20px
+    //   transform: translateY(-1px)
+    //   visibility: visible
+    /// todo Argon 方案；层叠次序有点问题，暂不使用
+    // &:after
+    //   content: ''
+    //   display: block
+    //   position: absolute
+    //   background: $color-theme
+    //   opacity: .1
+    //   pointer-events: none
+    //   border-radius: 15px
+    //   left: -2px
+    //   bottom: 2px
+    //   width: 45px
+    //   height: 13px
+// article
+//   &:not(.post_read)
+//     #post-body
+//       h3, h4, h5, h6
+//         display: initial
