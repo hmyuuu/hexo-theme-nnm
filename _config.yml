@@ -132,7 +132,10 @@ scroll_smooth: true
 navbar:
   visiable: auto # always, auto
   logo: # choose [img] or [icon + title]
-    img: volantis-static/media/org.volantis/blog/Logo-NavBar@3x.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+    # * Logo 图像： string | {light, dark}
+    img: volantis-static/media/org.volantis/blog/Logo-NavBar@3x.png
+    # light:
+    # dark:
     icon:
     title:
   menu:

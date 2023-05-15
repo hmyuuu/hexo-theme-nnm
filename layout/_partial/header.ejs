@@ -15,7 +15,12 @@
         <% let logo = theme.navbar.logo %>
         <a class="title flat-box" target="_self" href='<%- url_for("/") %>'>
           <% if (logo.img) { %>
-            <img no-lazy class='logo' src='<%- logo.img %>'/>
+            <% if (typeof logo.img === 'string') { %>
+              <img no-lazy class='logo' src='<%- logo.img %>'/>
+            <% } else if (logo.img.light && logo.img.dark) { %>
+              <img no-lazy class='logo-light' src='<%- logo.img.light %>'/>
+              <img no-lazy class='logo-dark' src='<%- logo.img.dark %>'/>
+            <% } %>
           <% } %>
           <% if (logo.icon) { %>
             <i class='<%- logo.icon %>'></i>

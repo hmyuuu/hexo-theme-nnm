@@ -8,7 +8,23 @@ nnm_dark()
     code
       background: mix(#888, $color-dark-card, 17%)
     
-
+  // APlayer 暗黑模式修正
+  .aplayer
+    .aplayer-list
+      ol
+        &::-webkit-scrollbar-thumb
+          background: lighten($color-dark-card, 6) !important
+          &:hover
+            background: lighten($color-dark-card, 12) !important
+    .aplayer-volume-bar
+      background: lighten($color-dark-card, 6) !important
+    .aplayer-icon:hover
+      path
+        fill: #ccc !important
+    .aplayer-bar
+      background: lighten($color-dark-card, 3) !important
+      .aplayer-loaded
+        background: lighten($color-dark-card, 12) !important
 
 @media (prefers-color-scheme: dark)
   :root
