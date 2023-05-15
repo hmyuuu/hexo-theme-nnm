@@ -1,7 +1,7 @@
 {
-  "name": "hexo-theme-ymd45921",
+  "name": "@kohaku/hexo-theme-ymd45921",
   "version": "1.0.0",
-  "description": "A self-use Hexo theme based on hexo-theme-volantis.",
+  "description": "A self-use Hexo theme, designed and modified based on volantis.",
   "main": "package.json",
   "scripts": {
     "test": "echo test"
