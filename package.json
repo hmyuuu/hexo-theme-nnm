@@ -1,11 +1,13 @@
 {
-  "name": "@kohaku/hexo-theme-ymd45921",
+  "name": "hexo-theme-jisui-vlts",
+  "displayName": "自炊 Volantis",
   "version": "1.0.0",
-  "description": "A self-use Hexo theme, designed and modified based on volantis.",
+  "description": "A self-use Hexo theme, designed and modified based on volantis. Rename because my username is triggered spam detection.",
   "main": "package.json",
   "scripts": {
     "test": "echo test"
   },
+  "author": "Nanami <i@shiraha.cn>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ymd45921/hexo-theme-ymd45921.git"
