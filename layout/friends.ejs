@@ -16,16 +16,17 @@
           <% if (theme.pages.friends.layout_scheme == 'traditional') { %>
             <div class='friend-content'>
               <% getList(group.items).forEach(function(item){ %>
-                <% if (item.url && item.title) { %>
+                <% if (item.url && (item.author || item.title)) { %>
                   <a class='friend-card'
                     target="_blank" rel="external noopener noreferrer" href="<%- url_for(item.url || '/') %>">
                     <div class='friend-left'>
-                      <% if (item.avatar) { %>
+                      <% if (item.avatar) { %>                      <% /* 设置一个默认的占位符 */ %>
                         <img class='avatar' src='<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>'/>
                       <% } %>
                     </div>
                     <div class='friend-right'>
-                      <p class="friend-name"><%- item.title %></p>
+                      <% /* TODO: traditional 布局也要更好的 author + title 的模式 */ %>
+                      <p class="friend-name"><%- item.author || item.title %></p>
                       <% if (item.keywords) { %>
                         <div class='friend-tags-wrapper'>
                         <% getList(item.keywords).forEach(function(keyword){ %>
@@ -46,10 +47,13 @@
           <% } else { %>
             <div class='simpleuser-group'>
               <% getList(group.items).forEach(function(item){ %>
-                <% if (item.url && item.title) { %>
+                <% if (item.url && (item.title || item.author)) { %>
                   <a class="simpleuser" target="_blank" rel="external noopener noreferrer" href="<%- url_for(item.url || '/') %>">
                     <img src="<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>"/>
-                    <span><%- item.title %></span>
+                    <span class="friend-title"><%- item.title || (item.author + '的网站') %></span>
+                    <% if (item.title && item.author) { %>
+                      <span class="friend-name"><%- item.author %></span>
+                    <% } %>
                   </a>
                 <% } %>
               <% }) %>
