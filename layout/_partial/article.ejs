@@ -54,7 +54,8 @@
       <% } %>
       <!-- 版权声明组件 -->
       <% if (['post'].includes(page.layout) && footer_widget.copyright && footer_widget.copyright.enable == true && post.copyright != false) { %>
-        <% if (footer_widget.copyright.custom) { %>
+        <% if (footer_widget.copyright.layout === 'custom' || 
+               footer_widget.copyright.custom) { %>
           <%
             let author = theme.article.body.meta_library.author;
             let aid = post.author;
@@ -102,16 +103,65 @@
             <div class="license-statement"><%- copyrightRuleDesc %></div>
           </div>
         <% } else { %>
+          <% /* 简单的版权信息 */ %>
+          <%
+            let author = theme.article.body.meta_library.author;
+            let aid = post.author;
+            if (aid && site.data && site.data.author && (aid in site.data.author)) {
+              author = site.data.author[aid];
+            }
+            let articleCreate =  date(post.date, theme.article.body.meta_library.date.format);
+            // ? post.update 是 front-matter 中的 update 吗？
+            let articleUpdate = date(post.updated || post.update, theme.article.body.meta_library.updated.format);  
+            const defaultCopyright = '博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议'
+            const permalink = decodeURI(page.permalink);
+            const simpleLayoutComponents = ['permalink'];
+          %>
           <div class='copyright'>
-            <blockquote>
-              <% getList(footer_widget.copyright.content).forEach(function(row){ %>
-                <% if (row == 'permalink') { %>
-                  <p><%- footer_widget.copyright.permalink %><a href="<%- decodeURI(page.permalink) %>"><%- decodeURI(page.permalink) %></a></p>
-                <% } else { %>
-                  <%- markdown(row) %>
-                <% } %>
-              <% }) %>
-            </blockquote>
+            <% if (footer_widget.copyright.layout === 'simple') { %>
+              <blockquote>
+                <% getList(footer_widget.copyright.content).forEach(function(row){ %>
+                  <% if (row == 'permalink') { %>
+                    <p><%- footer_widget.copyright.permalink %><a href="<%- permalink %>"><%- permalink %></a></p>
+                  <% } else { %>
+                    <%- markdown(row) %>
+                  <% } %>
+                <% }) %>
+              </blockquote>
+            <% } else { /* enhanced 版权信息布局 */ %>
+              <blockquote class="enhanced">
+                <div class="copyright-title"><%- post.title %></div>
+                <div class="copyright-link">
+                  <a href="<%- permalink %>"><%- permalink %></a>
+                </div>
+                <div class="copyright-meta">
+                  <div class="copyright-meta-item">
+                    <div class="copyright-meta-title"><%- __('post.copyright.author') %></div>
+                    <div class="copyright-meta-text"><%- post.copyright?.author || author.name %></div>
+                  </div>
+                  <div class="copyright-meta-item">
+                    <div class="copyright-meta-title"><%- __('post.copyright.date') %></div>
+                    <div class="copyright-meta-text"><%- articleCreate %></div>
+                  </div>
+                  <% /* 一些我不知道的设定 */ %>
+                  <div class="copyright-meta-item">
+                    <div class="copyright-meta-title"><%- __('post.copyright.license') %></div>
+                    <div class="copyright-meta-text">
+                      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh#" target="_blank" rel="external nofollow noopener noreferrer">
+                        CC BY-NC-SA 4.0
+                      </a>
+                    </div>
+                  </div>
+                  <div class="copyright-statement">
+                    <% getList(footer_widget.copyright.content).forEach(function(row){ %>
+                      <% if (!simpleLayoutComponents.includes(row)) { %>
+                        <%- markdown(row) %>
+                      <% } %>
+                    <% }) %>
+                  </div>
+                </div>
+              </blockquote>
+            <% } %>
           </div>
         <% } %>
       <% } %>
