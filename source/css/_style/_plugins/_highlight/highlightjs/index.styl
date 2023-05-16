@@ -18,7 +18,8 @@ pre
   width: 100%
   margin: $gap-p 0
   display: block
-  background: var(--color-block)
+  // background: var(--color-block) // 我觉得不太合理
+  background: alpha($color-block, .5);
   font-size: $fontsize-code
   font-family: $fontfamily-code
   border-radius: $border-codeblock
@@ -76,6 +77,7 @@ pre
       left: 0
       z-index: 1
       background: darken($color-block, 5)
+      border-radius: $border-codeblock 0 0 $border-codeblock
       pre
         color: var(--color-meta)
 

@@ -36,11 +36,16 @@ kbd
 
 //highlight
 if hexo-config('plugins.code_highlight') == "highlightjs"
-  .gutter
-    background: var(--color-card) !important
-    background-color: var(--color-card) !important
-  .highlight figcaption
-    background-color: #14161a
+  .highlight
+    background: darken($color-dark-block, 10);
+    .gutter
+      background: darken($color-dark-card, 2) !important
+    &:hover 
+      background: var(--color-codeblock) // todo 保持原设计一致？
+      .gutter
+        background-color: lighten($color-dark-card, 5) !important
+    figcaption
+      background-color: #14161a
   .highlight pre .line, .highlight pre .params
     color: rgba(158, 142, 142, 0.9)
 
