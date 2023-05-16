@@ -1,7 +1,7 @@
 {
   "name": "hexo-theme-jisui-vlts",
   "displayName": "自炊 Volantis",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A self-use Hexo theme, designed and modified based on volantis. Rename because my username is triggered spam detection.",
   "main": "package.json",
   "scripts": {
@@ -20,8 +20,8 @@
   "license": "MIT",
   "dependencies": {
     "hexo": "^6.3.0",
-    "hexo-renderer-stylus": "^2.1.0",
+    "hexo-generator-json-content": "^4.2.3",
     "hexo-renderer-ejs": "^2.0.0",
-    "hexo-generator-json-content": "^4.2.3"
+    "hexo-renderer-stylus": "^2.1.0"
   }
 }
