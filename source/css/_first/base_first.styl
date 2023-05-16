@@ -108,7 +108,11 @@ button
 
 .blur
   @supports (backdrop-filter: blur(20px))
-    background: alpha($color-card, .9) !important
+    background: alpha($color-card, .8) !important
+    backdrop-filter: saturate(200%) blur(20px)
+  // * 试试看，只改了这一处；其他地方可以再改
+  @supports (-webkit-backdrop-filter: blur(20px))   
+    background: alpha($color-card, .7) !important
     backdrop-filter: saturate(200%) blur(20px)
 
 if hexo-config('comments.service')=='discuss' || hexo-config('comments.service')=='twikoo' || hexo-config('comments.service')=='waline'
