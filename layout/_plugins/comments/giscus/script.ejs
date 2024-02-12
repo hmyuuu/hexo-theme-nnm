@@ -13,9 +13,17 @@
     return document.getElementById("giscus_container");
   }
 
+  function check_is_unsupported_ua() {
+    const ua = navigator?.userAgent?.toLowerCase();
+    return !ua || !!/MicroMessenger/i.test(ua) || !!/QQ\//i.test(ua);
+  }
+
   function pjax_giscus() {
     const HEAD = check_giscus();
     if (!HEAD) return;
+    if (check_is_unsupported_ua()) {
+      HEAD.innerHTML = '<p align="center">当前浏览器 UA 未知或不支持 Giscus，无法使用评论。</p>';
+    }
     let cfg = Object.assign(<%- JSON.stringify(theme.comments.giscus) %>,pdata.commentConfig)
     const script = document.createElement('script');
     script.setAttribute('src', 'https://giscus.app/client.js');
@@ -31,7 +39,7 @@
 
   function dark_giscus() {
     const HEAD = check_giscus();
-    if (!HEAD) return;
+    if (!HEAD || check_is_unsupported_ua()) return;
 
     const message = {
       setConfig: {
